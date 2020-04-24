@@ -1,8 +1,6 @@
 //Function Timer
-
 function startTimer(duration, display) {
     var timer = duration, seconds;
-    
     setInterval(function () {
        seconds = parseInt(timer % 60, 10);
         seconds = seconds < 20 ? "" + seconds : seconds;
@@ -28,7 +26,7 @@ function question(text, choices, answer) {  // funtion for question controller
     this.choices = choices;
     this.answer = answer;       
 }
-question.prototype.correctansw = function (choice) { // functio correct answer
+question.prototype.correctansw = function (choice) { // function correct answer
     return choice === this.answer;
 }
 function quiz(questions) { // quiz controller 
@@ -37,4 +35,10 @@ function quiz(questions) { // quiz controller
     this.questionIndex = 0;
 }
 
-
+quiz.prototype.getquestionIndex = function () {
+    return this.question[this.questionIndex];
+}
+ 
+quiz.prototype.end = function () {
+    return this.questions.lenght === this.questionIndex
+}
