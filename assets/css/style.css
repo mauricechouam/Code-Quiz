@@ -1,7 +1,5 @@
-body {
 
-    background-color: rgb(20, 8, 11);
-}
+
 h1{
     font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
@@ -17,6 +15,9 @@ h1{
     border-radius: 50px;
     border: 2px solid #ccbbcc;
     box-shadow: 10px 10px 10px #0c0658;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
 }
 
 .container h1{
