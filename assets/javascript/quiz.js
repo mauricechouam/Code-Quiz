@@ -122,10 +122,10 @@ function guesses(id, guess) {
 }
 
 function score() {
-    var title = "<h2>Result<h2>";
+    var titleresult = "<h2>Result<h2>";
     title += "<h2 id='score'> Your Scores :" + quizz.score + "<h2>";
     var element = document.getElementById("quiz");
-    element.innerHTML = title;
+    element.innerHTML = titleresult;
 };
 
 function progress() {
