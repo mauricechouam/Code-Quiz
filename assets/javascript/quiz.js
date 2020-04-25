@@ -21,6 +21,9 @@ window.onload = function () {
 };
 
 
+
+
+
 function question(text, choices, answer) {  // funtion for question controller 
     this.text = text;
     this.choices = choices;
@@ -54,12 +57,9 @@ quiz.prototype.guess = function (answer) {
     this.questionIndex++;
     if (this.getquestionIndex().correctansw(answer)) {
         this.score++;
-    }  
+    }
 
 }
-
-
-
 // create some Local variables
 
 var questions = [
@@ -81,18 +81,29 @@ var questions = [
     new question("What does HTML stand for?", ["A - Home Tool Markup Language", "B -Hyper Text Markup Language",
         "C - Hyperlinks Text Markup Language", "D - Hyperlinks and Text Markup Language"], "B -Hyper Text Markup Language"),
     new question("Which is the correct CSS syntax?", ["A -body {color: black;}", "B -{body:color=black;}", "C -body:color=black;", "D -{body;color:black;}"],
-          "A -body {color: black;}")
+        "A -body {color: black;}")
 
 ];
 
 var quizz = new quiz(questions);
+var clicbutton = document.querySelector("#imag");
 
-play();
+
+startgame();
+
+function startgame() {
+    clicbutton.addEventListener("click", function () {
+        clicbutton.innerHTML = " <img id=image src=./assets/image/luck.gif width=50% height=120>"
+        play();
+
+    })
+}
+
 
 function play() {
-
     if (quizz.end()) {
         score();
+
 
     } else {
         // display the question
@@ -105,12 +116,10 @@ function play() {
             var element = document.getElementById("answer" + i);
             element.innerHTML = answerschoices[i];
             guesses("bt" + i, answerschoices[i]);
-
-
         }
     }
     progress();
-   
+    startTimer(25, display);
 }
 
 function guesses(id, guess) {
@@ -120,18 +129,17 @@ function guesses(id, guess) {
         play();
     }
 }
-
 function score() {
-    var titleresult = "<h2>Result<h2>";
+    var title = "<h2>Result<h2>";
     title += "<h2 id='score'> Your Scores :" + quizz.score + "<h2>";
     var element = document.getElementById("quiz");
-    element.innerHTML = titleresult;
+    element.innerHTML = title;
 };
 
 function progress() {
-    var current = quizz.questionIndex+1;
+    var current = quizz.questionIndex + 1;
     var element = document.getElementById("progress");
     element.innerHTML = "Question " + current + " of " + quizz.questions.length;
-    startTimer(25, display);
-    
+
+
 }
