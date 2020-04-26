@@ -29,7 +29,10 @@ var decision = document.querySelector("#deci");
 var element = document.querySelector("#quiz");
 var progress2 = document.querySelector("#progress");
 var currentime = 20;
-var counter = localStorage.getItem("score");
+var counter = 0;
+var UserName = document.querySelector("#user-email");
+
+
 
 //Function Timer
 function startTimer(duration, display) {
@@ -108,13 +111,13 @@ startgame();
 function startgame() {
     clicbutton.addEventListener("click", function () {
         clicbutton.innerHTML = " <img id=image src=./assets/image/luck.gif width=50% height=120>"
-        startTimer(currentime , display);
+        startTimer(currentime, display);
         play()
-       
-    
+
+
 
     })
-   
+
 }
 
 
@@ -160,10 +163,13 @@ function progress() {
     progress2.innerHTML = "Question " + current + " of " + quizz.questions.length;
 
     if (current >= quizz.questions.length) {
-        element.innerHTML ="<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>";
-        clicbutton.innerHTML = "";
+        element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>" +
+            " <p><strong>Enter your name :</strong><span id=UserName></span></p>  <input type=text name= Your Name id=email placeholder=name / > </p> " +
+            "<button id=Sumbit>SUBMIT</button>"
+        clicbutton.innerHTML =
         progress2.innerHTML = "";
-        startTimer();
+        localStorage.setItem("UserName", UserName);
+        startTimer(60,display);
 
 
     }
