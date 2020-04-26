@@ -47,7 +47,14 @@ function startTimer(duration, display) {
             timer = duration;
         }
         else if (timer === 0) {
-            
+            element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>" +
+
+                "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button </form> "
+            clicbutton.innerHTML =
+                progress2.innerHTML = "";
+            startTimer(60, display);
+
+
         }
     }, 1000);
 }
@@ -162,7 +169,7 @@ function progress() {
     if (current >= quizz.questions.length) {
         element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>" +
 
-     "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button </form> "
+            "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button </form> "
         clicbutton.innerHTML =
             progress2.innerHTML = "";
         startTimer(60, display);
@@ -170,20 +177,20 @@ function progress() {
 
     }
 }
- // event listener for button submit
+// event listener for button submit
 submit.addEventListener("click", function () {
     localStorage.setItem("score", counter);
-   
+
     var Name = UserName.value;
     var score = counter.value;
-  
+
     if (Name === "") {
-      alert("error Name cannot be blank");
+        alert("error Name cannot be blank");
     }
     else {
         localStorage.setItem("Username", Name);
-        localStorage.setItem("score", score );
-      
+        localStorage.setItem("score", score);
+
     }
 });
 
