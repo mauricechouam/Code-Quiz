@@ -31,8 +31,6 @@ var progress2 = document.querySelector("#progress");
 var counter = 0;
 var currentime = 20;
 
-
-
 //Function Timer
 function startTimer(duration, display) {
     var timer = duration, seconds;
@@ -110,9 +108,12 @@ function startgame() {
     clicbutton.addEventListener("click", function () {
         clicbutton.innerHTML = " <img id=image src=./assets/image/luck.gif width=50% height=120>"
         startTimer(currentime , display);
-        play();
+        play()
+       
+    
 
     })
+   
 }
 
 
@@ -158,9 +159,10 @@ function progress() {
     progress2.innerHTML = "Question " + current + " of " + quizz.questions.length;
 
     if (current >= quizz.questions.length) {
-        element.innerHTML = "<h1> END OF THE QUIZZ</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>";;
+        element.innerHTML ="<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>";
         clicbutton.innerHTML = "";
         progress2.innerHTML = "";
+        startTimer();
 
 
     }
