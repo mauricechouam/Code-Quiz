@@ -28,10 +28,15 @@ var clicbutton = document.querySelector("#imag");
 var decision = document.querySelector("#deci");
 var element = document.querySelector("#quiz");
 var progress2 = document.querySelector("#progress");
-var currentime = 20;
+var currentime = 59;
 var counter = 0;
 var UserName = document.querySelector("#username");
 var submit = document.querySelector("#sign-up");
+
+var totalSeconds = 0;
+var secondsElapsed = 0;
+var status = "Working";
+var interval;
 
 
 
@@ -40,7 +45,7 @@ function startTimer(duration, display) {
     var timer = duration, seconds;
     setInterval(function () {
         seconds = parseInt(timer % 60, 10);
-        seconds = seconds < 20 ? "" + seconds : seconds;
+        seconds = seconds < 60 ? "" + seconds : seconds;
         display.textContent = + seconds;
 
         if (--timer < 0) {
@@ -52,7 +57,7 @@ function startTimer(duration, display) {
                 "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button </form> "
             clicbutton.innerHTML =
                 progress2.innerHTML = "";
-            startTimer(60, display);
+            startTimer(currentime, display);
 
 
         }
@@ -78,7 +83,6 @@ question.prototype.wrongansw = function (choices) { // function correct answer
 }
 
 
-
 function quiz(questions) { // quiz controller 
     this.score = 0;
     this.questions = questions;
@@ -98,6 +102,7 @@ quiz.prototype.guess = function (answer) {
         this.score++;
         decision.innerHTML = "Correct";
         counter++;
+        localStorage.setItem("score", counter);
     }
     else {
         decision.innerHTML = "inCorrect";
@@ -117,13 +122,8 @@ function startgame() {
         clicbutton.innerHTML = " <img id=image src=./assets/image/luck.gif width=50% height=120>"
         startTimer(currentime, display);
         play()
-
-
-
     })
-
 }
-
 
 function play() {
     if (quizz.end()) {
@@ -169,27 +169,31 @@ function progress() {
     if (current >= quizz.questions.length) {
         element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>" +
 
-            "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button </form> "
+            "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button>  "
         clicbutton.innerHTML =
-            progress2.innerHTML = "";
-        startTimer(60, display);
+        progress2.innerHTML = "";
+
 
 
     }
 }
+
+ 
 // event listener for button submit
 submit.addEventListener("click", function () {
     localStorage.setItem("score", counter);
 
     var Name = UserName.value;
-    var score = counter.value;
+    
 
     if (Name === "") {
         alert("error Name cannot be blank");
     }
     else {
         localStorage.setItem("Username", Name);
-        localStorage.setItem("score", score);
+        localStorage.setItem("score", counter);
+        displayMessage("success", "Registered successfully");
+       
 
     }
 });
