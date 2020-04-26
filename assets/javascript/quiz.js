@@ -28,8 +28,8 @@ var clicbutton = document.querySelector("#imag");
 var decision = document.querySelector("#deci");
 var element = document.querySelector("#quiz");
 var progress2 = document.querySelector("#progress");
-var counter = 0;
 var currentime = 20;
+var counter = localStorage.getItem("score");
 
 //Function Timer
 function startTimer(duration, display) {
@@ -90,6 +90,7 @@ quiz.prototype.guess = function (answer) {
         this.score++;
         decision.innerHTML = "Correct";
         counter++;
+        localStorage.setItem("score", counter);
     }
     else {
         decision.innerHTML = "inCorrect";
