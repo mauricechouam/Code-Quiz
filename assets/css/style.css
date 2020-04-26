@@ -79,7 +79,7 @@ p {
 
 #bt0:hover,#bt1:hover , #bt2:hover, #bt3:hover{
     cursor: pointer;
-    background-color: black;
+    background-color: rgb(224, 15, 15);
 }
 
 h4{
@@ -88,6 +88,14 @@ h4{
     text-align: right;
     font-family: cursive;
 
+}
+
+h5{
+    color:  red;
+    text-align: left;
+    font-family: cursive;
+    font-size: 30px;
+    
 }
 
 #imag{
