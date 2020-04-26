@@ -29,6 +29,7 @@ var decision = document.querySelector("#deci");
 var element = document.querySelector("#quiz");
 var progress2 = document.querySelector("#progress");
 var counter = 0;
+var currentime = 20;
 
 
 
@@ -44,13 +45,11 @@ function startTimer(duration, display) {
             timer = duration;
         }
         else if (timer === 0) {
-            element.innerHTML = "<h1> Game over</h1>";
+            element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>";;
             clicbutton.innerHTML = "";
             progress2.innerHTML = "";
-            
+
         }
-
-
     }, 1000);
 }
 
@@ -96,6 +95,7 @@ quiz.prototype.guess = function (answer) {
     }
     else {
         decision.innerHTML = "inCorrect";
+        currentime = currentime - 3;
     }
 
     this.questionIndex++;
@@ -109,7 +109,7 @@ startgame();
 function startgame() {
     clicbutton.addEventListener("click", function () {
         clicbutton.innerHTML = " <img id=image src=./assets/image/luck.gif width=50% height=120>"
-        startTimer(10, display);
+        startTimer(currentime , display);
         play();
 
     })
@@ -118,7 +118,7 @@ function startgame() {
 
 function play() {
     if (quizz.end()) {
-        
+
     } else {
         // display the question
         var element = document.getElementById("quest");
@@ -131,12 +131,9 @@ function play() {
             element.innerHTML = answerschoices[i];
             guesses("bt" + i, answerschoices[i]);
 
-
-
         }
     }
     progress();
-
 }
 
 function guesses(id, guess) {
@@ -161,11 +158,11 @@ function progress() {
     progress2.innerHTML = "Question " + current + " of " + quizz.questions.length;
 
     if (current >= quizz.questions.length) {
-        element.innerHTML = "<h1> END OF THE QUIZZ</h1>";
+        element.innerHTML = "<h1> END OF THE QUIZZ</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>";;
         clicbutton.innerHTML = "";
-            progress2.innerHTML = "";
-            alert(counter);
-        
+        progress2.innerHTML = "";
+
+
     }
 }
 
