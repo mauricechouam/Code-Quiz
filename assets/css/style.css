@@ -108,6 +108,26 @@ h5{
 button:hover {
     background-color: #0288d1;
   }
-
+  .input-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+.bt{
+  background-color: #039be5;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2em;
+  letter-spacing: 0.21px;
+  line-height: 16px;
+  max-width: 255px;
+  padding: 20px 52px;
+  text-align: center;
+  transition-duration: 0.15s;
+  transition-property: background-color;
+  transition-timing-function: linear;
+  margin-top: 0.6em;
+  float: right;
+}
     
     

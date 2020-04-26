@@ -30,7 +30,8 @@ var element = document.querySelector("#quiz");
 var progress2 = document.querySelector("#progress");
 var currentime = 20;
 var counter = 0;
-var UserName = document.querySelector("#user-email");
+var UserName = document.querySelector("#username");
+var submit = document.querySelector("#sign-up");
 
 
 
@@ -46,10 +47,7 @@ function startTimer(duration, display) {
             timer = duration;
         }
         else if (timer === 0) {
-            element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>";;
-            clicbutton.innerHTML = "";
-            progress2.innerHTML = "";
-
+            
         }
     }, 1000);
 }
@@ -93,7 +91,6 @@ quiz.prototype.guess = function (answer) {
         this.score++;
         decision.innerHTML = "Correct";
         counter++;
-        localStorage.setItem("score", counter);
     }
     else {
         decision.innerHTML = "inCorrect";
@@ -157,22 +154,36 @@ function score() {
     element.innerHTML = finalscore;
 
 }
-
+// function question progress
 function progress() {
     var current = quizz.questionIndex + 1;
     progress2.innerHTML = "Question " + current + " of " + quizz.questions.length;
 
     if (current >= quizz.questions.length) {
         element.innerHTML = "<h1> Game over</h1>" + "<h1 id='score'>Your Final Score is : " + counter + " </h1>" +
-            " <p><strong>Enter your name :</strong><span id=UserName></span></p>  <input type=text name= Your Name id=email placeholder=name / > </p> " +
-            "<button id=Sumbit>SUBMIT</button>"
+
+     "<input type= text name= EnterYourName id=username  placeholder=Enter_Your_Name_here />  <button class= bt id=sign-up >Sumbit</button </form> "
         clicbutton.innerHTML =
-        progress2.innerHTML = "";
-        localStorage.setItem("UserName", UserName);
-        startTimer(60,display);
+            progress2.innerHTML = "";
+        startTimer(60, display);
 
 
     }
 }
-
+ // event listener for button submit
+submit.addEventListener("click", function () {
+    localStorage.setItem("score", counter);
+   
+    var Name = UserName.value;
+    var score = counter.value;
+  
+    if (Name === "") {
+      alert("error Name cannot be blank");
+    }
+    else {
+        localStorage.setItem("Username", Name);
+        localStorage.setItem("score", score );
+      
+    }
+});
 
